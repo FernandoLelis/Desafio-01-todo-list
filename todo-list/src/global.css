@@ -16,6 +16,11 @@
     --danger: #e25858;
 }
 
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--blueDark)
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +28,7 @@
 }
 
 body {
-    background: var(--gray-400);
+    background: var(--gray-600);
     color: var(--gray-300);
     -webkit-font-smoothing: antialiased;
 }
