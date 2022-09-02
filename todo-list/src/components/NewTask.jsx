@@ -2,7 +2,7 @@ import { PlusCircle } from 'phosphor-react';
 
 import styles from './NewTask.module.css';
 
-import plus from '../assets/plus.svg';
+
 
 export function NewTask() {
     return (
