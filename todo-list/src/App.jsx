@@ -6,13 +6,6 @@ import './global.css';
 
 import styles from './App.module.css';
 
-const tasks = [
-  {
-    id: 1,
-    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    check: false,
-  }
-]
 
 function App() {
 
@@ -24,6 +17,7 @@ function App() {
         <NewTask />
         
         <Tasks />
+         
       </div>
     </>
   )
