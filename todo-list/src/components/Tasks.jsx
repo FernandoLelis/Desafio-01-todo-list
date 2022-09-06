@@ -1,26 +1,26 @@
-import styles from './Tasks.module.css';
-
-import { ClipboardText } from 'phosphor-react';
 import { TasksList } from './TaskasList';
 
+import { ClipboardText } from 'phosphor-react';
+import { v4 as uuidv4 } from 'uuid';
 
+import styles from './Tasks.module.css';
+
+/*
 const tasksList = [
   {
-    id: 1,
+    id: uuidv4(),
     title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
     isComplete: false,
   },
   {
-    id: 2,
+    id: uuidv4(),
     title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
     isComplete: false,
   },
-  {
-    id: 3,
-    title: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    isComplete: false,
-  }
+  
 ]
+*/
+
 
 export function Tasks() {
     return (
@@ -42,12 +42,9 @@ export function Tasks() {
                 <p>Crie tarefas e organize seus itens a fazer</p>
             </div> 
             */} 
-
-            {tasksList.map(list => {
-                return <TasksList />
-            })
-
-            }
+                  <TasksList />
+                  <TasksList />
+                  <TasksList />             
 
             
         </article>

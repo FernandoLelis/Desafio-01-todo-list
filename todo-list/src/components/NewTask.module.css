@@ -22,6 +22,9 @@
     background: var(--gray-500);
     border: 1px solid var(--gray-700);
     border-radius: 8px;
+    color: var(--gray-100);
+    font-weight: 300;
+    font-size: 1rem;
     resize: none;
     height: 3.37rem;
     padding: 1rem;
