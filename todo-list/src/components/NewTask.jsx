@@ -1,35 +1,30 @@
-import { PlusCircle } from 'phosphor-react';
+import { Trash } from 'phosphor-react';
+
 
 import styles from './NewTask.module.css';
+import { v4 as uuidv4 } from 'uuid';
+
+export function NewTask({ newTask, isComplete, onDeleteTask }) {
+    function handleDeleteTask() {
+
+        onDeleteTask(newTask);
+    }
 
 
-const tasksList = [
-    1,
-    2,
-  ]
-
-  function handleCreateNewTask() {
-    event.preventDefault();
+    const uuid = uuidv4();
     
-    tasksList.push(3);
-
-    console.log(tasksList);
-  }
-
-export function NewTask() {
     return (
         <div className={styles.newTask}>
-            <form onSubmit={handleCreateNewTask} className={styles.newTaskForm}>
+            <div className={styles.checkBox}>
+                
+                <input type="checkbox" id={uuid} defaultChecked={isComplete} />
+                <label htmlFor={uuid}>{newTask}</label>
+                
+            </div>
 
-                <textarea 
-                placeholder="Adicione uma nava tarefa" 
-                />
-
-                <button type="submit">
-                    Criar
-                    <PlusCircle size={16} />
-                </button>
-            </form>
+           <button onClick={handleDeleteTask} title="Deletar Tarefa">
+                <Trash size={16} />
+            </button>
         </div>
-    );
+    )
 }

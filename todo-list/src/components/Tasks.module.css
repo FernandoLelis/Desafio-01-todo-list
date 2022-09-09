@@ -1,6 +1,57 @@
 .tasks {
     display: grid;
-    gap: 0.75rem;
+}
+
+.newTaskForm {
+    width: 100%;
+    max-height: 3.37rem;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0;
+
+    margin-top: -3.7rem;
+
+    display: grid;
+    grid-template-columns: 1fr 90px;
+    gap: 0.5rem;
+
+}
+
+.newTaskForm textarea {
+    background: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+    color: var(--gray-100);
+    font-weight: 300;
+    font-size: 1rem;
+    resize: none;
+    height: 3.37rem;
+    padding: 1rem;
+
+
+}
+
+.newTaskForm button[type=submit] {
+    background: var(--blueDark);
+    color: var(--gray-100);
+    font-size: 0.87rem;
+    font-weight: bold;
+    border: 0;
+    height: 3.25rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    transition: background-color 0.1s;
+}
+
+.newTaskForm button[type=submit]:hover {
+    background: var(--blue);
 }
 
 .tasks > header {
@@ -67,4 +118,8 @@
 
 .empty strong {
     margin-top: 1rem;
+}
+
+.tasksList {
+    display: grid;
 }

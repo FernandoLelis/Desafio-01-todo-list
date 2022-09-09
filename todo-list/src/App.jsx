@@ -1,5 +1,4 @@
 import { Header } from './components/Header';
-import { NewTask } from './components/NewTask';
 import { Tasks } from './components/Tasks';
 
 import './global.css';
@@ -14,7 +13,6 @@ function App() {
       <Header />
       
       <div className={styles.wrapper}>
-        <NewTask />
         
         <Tasks />
          
