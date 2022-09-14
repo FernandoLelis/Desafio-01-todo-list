@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PlusCircle } from 'phosphor-react';
+import { Check, PlusCircle } from 'phosphor-react';
 import { ClipboardText } from 'phosphor-react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,22 +7,16 @@ import { NewTask } from './NewTask';
 
 import styles from './Tasks.module.css';
 
-const task = [{
-    id: uuidv4(),
-    title: '',
-    isComplete: false,
-
-}]
-
 export function Tasks() {
     const [newTask, setNewTask] = useState([])
-
     const [newTaskText, setNewTaskText] = useState('')
+
+    const tasksQuantity = newTask.length;
+    const completedTasks = newTask.filter(newTask => newTask.isComplete).length;
 
 
     function handleCreateNewTask() {
         event.preventDefault();
-
        
         
         setNewTask([...newTask, 
@@ -33,19 +27,33 @@ export function Tasks() {
             
             }]);
         setNewTaskText('');
-      }
+    }
 
-      function handleNewTaskChange() {
+    function handleNewTaskChange() {
         setNewTaskText(event.target.value);
-      }
+    }
 
-      function deleteTask(newTaskToDelete) {
-           const tasksWithoutDeleteOne = newTask.filter(newTask => {
-                return newTask !== newTaskToDelete;
-            })
+    function deleteTask(newTaskToDelete) {
+        const tasksWithoutDeleteOne = newTask.filter(newTask => {
+            return newTask.id !== newTaskToDelete;
+        })
 
-            setNewTask(tasksWithoutDeleteOne);
-        }
+        setNewTask(tasksWithoutDeleteOne);
+    }
+
+    function toggleIsCompleteById() {
+        const tasksIsComplete = newTask.map(newTask => {
+            if (newTask.id === taskId) {
+                return {
+                    ...newTask, isComplete: !newTask.isComplete
+                };
+            }
+            return newTask;
+        })
+        setNewTask(tasksIsComplete)
+    }
+
+        
 
     return (
         <>
@@ -67,11 +75,11 @@ export function Tasks() {
                 <header>
                     <div className={styles.created}>
                         <p>Tarefas criadas</p>
-                        <span>{newTask.length}</span>
+                        <span>{tasksQuantity}</span>
                     </div>
                     <div className={styles.done}>
                     <p>Concluídas</p>
-                    <span>{newTask.length} de {newTask.length}</span>
+                    <span>{completedTasks} de {tasksQuantity}</span>
                     </div>
                 </header> 
 
@@ -87,9 +95,11 @@ export function Tasks() {
                             return (
                                 <NewTask 
                                     key={newTask.id} 
+                                    id={newTask.id}
                                     newTask={newTask.title} 
                                     isComplete={newTask.isComplete}
-                                    onDeleteTask={deleteTask} 
+                                    onDeleteTask={deleteTask}
+                                    onComplete={toggleIsCompleteById}
                                 />
                             )
                         })}
