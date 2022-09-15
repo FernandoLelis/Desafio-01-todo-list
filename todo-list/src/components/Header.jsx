@@ -6,7 +6,7 @@ import logo from '../assets/logo.svg';
 export function Header() {
     return(
         <header className={styles.header}>
-            <img src={logo} alt="Logo do Projeto"></img>
+            <img src={logo} alt="Logo do Projeto" />
             <strong className={styles.to}>to</strong><strong className={styles.do}>do</strong>
         </header>
     );

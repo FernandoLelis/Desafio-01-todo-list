@@ -8,7 +8,19 @@ import { NewTask } from './NewTask';
 import styles from './Tasks.module.css';
 
 export function Tasks() {
-    const [newTask, setNewTask] = useState([])
+    const [newTask, setNewTask] = useState([{
+            id: uuidv4(),
+            title: "newTaskText",
+            isComplete: false,
+    
+        },
+        {
+            id: uuidv4(),
+            title: "newTaskText",
+            isComplete: true,
+        
+        },
+    ])
     const [newTaskText, setNewTaskText] = useState('')
 
     const tasksQuantity = newTask.length;
@@ -43,14 +55,15 @@ export function Tasks() {
 
     function toggleIsCompleteById() {
         const tasksIsComplete = newTask.map(newTask => {
-            if (newTask.id === taskId) {
+            if (newTask.id == taskId) {
                 return {
-                    ...newTask, isComplete: !newTask.isComplete
+                    ...newTask, 
+                    isComplete: !newTask.isComplete
                 };
             }
             return newTask;
         })
-        setNewTask(tasksIsComplete)
+        setNewTask(tasksIsComplete);
     }
 
         
@@ -96,7 +109,7 @@ export function Tasks() {
                                 <NewTask 
                                     key={newTask.id} 
                                     id={newTask.id}
-                                    newTask={newTask.title} 
+                                    title={newTask.title} 
                                     isComplete={newTask.isComplete}
                                     onDeleteTask={deleteTask}
                                     onComplete={toggleIsCompleteById}
