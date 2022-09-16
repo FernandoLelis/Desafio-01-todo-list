@@ -53,9 +53,9 @@ export function Tasks() {
         setNewTask(tasksWithoutDeleteOne);
     }
 
-    function toggleIsCompleteById() {
+    function toggleIsCompleteById(taskId) {
         const tasksIsComplete = newTask.map(newTask => {
-            if (newTask.id == taskId) {
+            if (newTask.id === taskId) {
                 return {
                     ...newTask, 
                     isComplete: !newTask.isComplete
@@ -108,9 +108,7 @@ export function Tasks() {
                             return (
                                 <NewTask 
                                     key={newTask.id} 
-                                    id={newTask.id}
-                                    title={newTask.title} 
-                                    isComplete={newTask.isComplete}
+                                    newTask={newTask}                                    
                                     onDeleteTask={deleteTask}
                                     onComplete={toggleIsCompleteById}
                                 />
