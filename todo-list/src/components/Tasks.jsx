@@ -8,19 +8,7 @@ import { NewTask } from './NewTask';
 import styles from './Tasks.module.css';
 
 export function Tasks() {
-    const [newTask, setNewTask] = useState([{
-            id: uuidv4(),
-            title: "newTaskText",
-            isComplete: false,
-    
-        },
-        {
-            id: uuidv4(),
-            title: "newTaskText",
-            isComplete: true,
-        
-        },
-    ])
+    const [newTask, setNewTask] = useState([])
     const [newTaskText, setNewTaskText] = useState('')
 
     const tasksQuantity = newTask.length;
@@ -76,9 +64,13 @@ export function Tasks() {
                     value={newTaskText}
                     placeholder="Adicione uma nava tarefa" 
                     onChange={handleNewTaskChange}
+                    required
                 />
 
-                <button type="submit">
+                <button 
+                    type="submit"
+                    disabled={newTaskText.length === 0}
+                >
                     Criar
                     <PlusCircle size={16} />
                 </button>
